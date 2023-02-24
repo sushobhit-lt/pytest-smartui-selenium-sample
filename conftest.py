@@ -1,18 +1,21 @@
 from os import environ
 
 import pytest
+import random
 from selenium import webdriver
 from selenium.webdriver.remote.remote_connection import RemoteConnection
 
+smartui_build = "build-" + str(random.randrange(1, 100))
 
 @pytest.fixture(scope='function')
 def driver(request):
     desired_caps = {}
-
     browser = {
         "platform": "Windows 10",
         "browserName": "chrome",
-        "version": "latest"
+        "version": "latest",
+        "smartUI.project": "pytest-smartui-sample",
+        "smartUI.build": smartui_build, 
     }
 
     desired_caps.update(browser)

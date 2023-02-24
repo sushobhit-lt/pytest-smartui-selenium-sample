@@ -13,6 +13,7 @@ class TestLink:
         """
         driver.get('https://lambdatest.github.io/sample-todo-app/')
         driver.implicitly_wait(10)
+        driver.execute_script("smartui.takeScreenshot=title")
         driver.find_element(By.NAME, "li1").click()
         driver.find_element(By.NAME, "li2").click()
 
@@ -32,5 +33,7 @@ class TestLink:
         driver.find_element(By.ID, "addbutton").click()
 
         li6 = driver.find_element(By.NAME, "li6")
+        driver.execute_script("smartui.takeScreenshot=verify")
+
         # sys.stderr.write(li6)
         # assert sample_text in li6
